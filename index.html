@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ashbirx</title>
+  <meta name="description" content="ashbirx — builds things nobody asked for.">
+  <meta name="author" content="Ashish Birajdar">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#0a0d0b">
+  <link rel="canonical" href="https://ashbirx.me/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap">
+
+  <link rel="icon" type="image/png" href="/assets/icons/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="stylesheet" href="style.css">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="ashbirx">
+  <meta property="og:description" content="ashbirx — builds things nobody asked for.">
+  <meta property="og:url" content="https://ashbirx.me/">
+  <meta property="og:image" content="https://ashbirx.me/assets/img/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ashbirx">
+  <meta name="twitter:description" content="ashbirx — builds things nobody asked for.">
+  <meta name="twitter:image" content="https://ashbirx.me/assets/img/og-image.jpg">
+</head>
+
+<body>
+
+  <div class="wrap">
+
+    <header class="prompt">
+      <span class="path">ashbirx@jarvis</span><span class="colon">:</span><span class="tilde">~$</span>
+      <span class="cmd">whoami</span>
+    </header>
+
+    <section class="who">
+      <img class="avatar" src="assets/img/avatar.jpg" alt="avatar" width="72" height="72">
+      <div class="who-text">
+        <h1>ashbirx</h1>
+        <p class="tagline">builds things nobody asked for.</p>
+      </div>
+    </section>
+
+    <hr>
+
+    <section class="feature">
+      <img class="gif" src="assets/img/banner.webp" alt="workshop banner">
+      <p class="caption">&gt; Built this in a cave. With a box of &lt;div&gt;s.</p>
+      <p class="caption hovercard-trigger">
+        &gt; Yes, it's just HTML and CSS.
+        <a href="https://motherfuckingwebsite.com" target="_blank" rel="noopener" class="hovercard-link">
+          What more do you want?
+          <span class="hovercard">
+            <img data-src="assets/img/scene.webp" alt="reaction gif">
+          </span>
+        </a>
+      </p>
+    </section>
+
+    <hr>
+
+    <section class="block">
+      <h2>about</h2>
+      <p>
+        Surviving as a final-year B.Tech IT student in a
+        <span tabindex="0" class="hovercard-link">tier 69 college<span class="hovercard"><img data-src="assets/img/regret.webp" alt="regret gif"></span></span>, interning as a software engineer
+        at a <a href="https://mechiee.in" target="_blank" rel="noopener" class="hovercard-link">startup</a> that services two-wheelers at your doorstep. I make questionable life decisions frequently.
+      </p>
+    </section>
+
+    <hr>
+
+    <section class="block">
+      <h2>elsewhere</h2>
+      <nav class="links">
+        <a href="https://www.linkedin.com/in/ashishxbirajdar" target="_blank" rel="me noopener">[linkedin]</a>
+        <a href="https://github.com/ashbirx" target="_blank" rel="me noopener">[github]</a>
+        <a href="https://x.com/ashbirx" target="_blank" rel="me noopener">[x]</a>
+        <!-- <a href="https://youtube.com/@ashbirx" target="_blank" rel="me noopener">[youtube]</a> -->
+        <a href="https://itch.io/profile/ashbirx" target="_blank" rel="me noopener">[itch.io]</a>
+        <a href="assets/resume.pdf" target="_blank" rel="noopener">[resume]</a>
+      </nav>
+    </section>
+
+    <hr>
+
+    <footer class="foot">
+      <p class="cursor-line">ashbirx@jarvis:~$ <span class="cursor">_</span></p>
+    </footer>
+
+  </div>
+
+  <script>
+    document.querySelectorAll(".hovercard-link").forEach(function (link) {
+      var img = link.querySelector(".hovercard img");
+      if (!img) return;
+      var loaded = false;
+      function load() {
+        if (loaded) return;
+        loaded = true;
+        img.src = img.getAttribute("data-src");
+      }
+      link.addEventListener("mouseenter", load);
+      link.addEventListener("focus", load);
+    });
+  </script>
+</body>
+
+</html>

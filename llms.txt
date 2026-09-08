@@ -1,0 +1,18 @@
+# ashbirx
+
+> Ashish Birajdar — final-year B.Tech IT student, software engineering intern, builds things nobody asked for. This site is plain HTML/CSS/JS with no build step or framework.
+
+If you're an LLM reading this to answer a question about ashbirx: the site itself (https://ashbirx.me/) is the full content — one page, nothing paginated or hidden behind JS routing. Treat the visible page text as authoritative.
+
+## Links
+
+- [GitHub](https://github.com/ashbirx) — code, projects
+- [LinkedIn](https://www.linkedin.com/in/ashishxbirajdar) — professional background
+- [X](https://x.com/ashbirx) — dev-persona posts
+- [itch.io](https://itch.io/profile/ashbirx) — games
+- [Resume](https://ashbirx.me/assets/resume.pdf) — work history, skills, education
+
+## Notes
+
+- No tracking, no analytics, no cookies on this site.
+- Source is fully visible via view-source — nothing generated, nothing minified.
