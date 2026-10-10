@@ -2,7 +2,8 @@
 // Builds the blog from content/blog/*.md into static HTML.
 // No dependencies: node scripts/build-blog.mjs
 //
-// Writes:  blog/index.html, blog/<slug>.html, blog/feed.xml, sitemap.xml
+// Writes:  public/blog/index.html, public/blog/<slug>.html, public/blog/feed.xml,
+//          public/sitemap.xml
 
 import { readFileSync, writeFileSync, readdirSync, mkdirSync, existsSync, unlinkSync } from "node:fs";
 import { join, dirname } from "node:path";
@@ -10,7 +11,8 @@ import { fileURLToPath } from "node:url";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const CONTENT_DIR = join(ROOT, "content", "blog");
-const OUT_DIR = join(ROOT, "blog");
+const PUBLIC_DIR = join(ROOT, "public");
+const OUT_DIR = join(PUBLIC_DIR, "blog");
 const SITE = "https://ashbirx.me";
 const AUTHOR = "Ashish Birajdar";
 const OG_IMAGE = `${SITE}/assets/img/og-image.jpg`;
@@ -224,8 +226,8 @@ function head({ title, description, canonical, type, extraMeta = "", ld }) {
   <link rel="shortcut icon" href="/favicon.ico" />
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png" />
   <link rel="manifest" href="/site.webmanifest">
-  <link rel="stylesheet" href="/style.css">
-  <link rel="stylesheet" href="/blog.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/blog.css">
 
   <meta property="og:type" content="${type}">
   <meta property="og:site_name" content="ashbirx">
@@ -443,7 +445,7 @@ ${items}
 }
 
 function sitemap(posts) {
-  const path = join(ROOT, "sitemap.xml");
+  const path = join(PUBLIC_DIR, "sitemap.xml");
   const existing = existsSync(path) ? readFileSync(path, "utf8") : "";
   // keep every non-blog entry exactly as it is
   const kept = (existing.match(/  <url>[\s\S]*?<\/url>/g) || []).filter((u) => !u.includes(`${SITE}/blog`));
@@ -501,7 +503,7 @@ const outputs = new Map();
 for (const p of posts) outputs.set(join(OUT_DIR, `${p.slug}.html`), postPage(p));
 outputs.set(join(OUT_DIR, "index.html"), indexPage(posts));
 outputs.set(join(OUT_DIR, "feed.xml"), feed(posts));
-outputs.set(join(ROOT, "sitemap.xml"), sitemap(posts));
+outputs.set(join(PUBLIC_DIR, "sitemap.xml"), sitemap(posts));
 
 for (const [path, content] of outputs) {
   const rel = path.slice(ROOT.length + 1);

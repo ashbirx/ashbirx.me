@@ -1,4 +1,0 @@
-# blog sources and build script: the generated HTML in /blog is what ships
-content/
-scripts/
-*-prompt.md
