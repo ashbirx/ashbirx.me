@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ashbirx blog</title>
+    <link>https://ashbirx.me/blog</link>
+    <description>Write-ups by ashbirx on things built, things broken, and what they taught me.</description>
+    <language>en</language>
+    <lastBuildDate>Tue, 06 Oct 2026 00:00:00 GMT</lastBuildDate>
+    <atom:link href="https://ashbirx.me/blog/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Designing for the Day Things Break: Five Months on a Live Bike-Servicing Platform</title>
+      <link>https://ashbirx.me/blog/mechiee-internship-designing-for-failure</link>
+      <guid isPermaLink="true">https://ashbirx.me/blog/mechiee-internship-designing-for-failure</guid>
+      <pubDate>Tue, 06 Oct 2026 00:00:00 GMT</pubDate>
+      <description>What I learned building live tracking, optional Redis, a blog CMS and onboarding flows at Mechiee, a doorstep two-wheeler servicing startup.</description>
+      <category>internship</category>
+      <category>nodejs</category>
+      <category>react</category>
+      <category>socket-io</category>
+      <category>redis</category>
+      <category>startup</category>
+      <category>devops</category>
+    </item>
+  </channel>
+</rss>

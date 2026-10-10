@@ -15,3 +15,6 @@ Desktop.ini
 
 # Node (if ever needed)
 node_modules/
+
+# Local prompt / planning notes
+*-prompt.md

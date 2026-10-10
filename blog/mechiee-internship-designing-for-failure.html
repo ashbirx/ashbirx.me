@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Designing for the Day Things Break: Five Months on a Live Bike-Servicing Platform — ashbirx</title>
+  <meta name="description" content="What I learned building live tracking, optional Redis, a blog CMS and onboarding flows at Mechiee, a doorstep two-wheeler servicing startup.">
+  <meta name="author" content="Ashish Birajdar">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#0a0d0b">
+  <link rel="canonical" href="https://ashbirx.me/blog/mechiee-internship-designing-for-failure">
+  <link rel="alternate" type="application/rss+xml" title="ashbirx blog" href="https://ashbirx.me/blog/feed.xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap">
+
+  <link rel="icon" type="image/png" href="/assets/icons/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/blog.css">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="ashbirx">
+  <meta property="og:title" content="Designing for the Day Things Break: Five Months on a Live Bike-Servicing Platform — ashbirx">
+  <meta property="og:description" content="What I learned building live tracking, optional Redis, a blog CMS and onboarding flows at Mechiee, a doorstep two-wheeler servicing startup.">
+  <meta property="og:url" content="https://ashbirx.me/blog/mechiee-internship-designing-for-failure">
+  <meta property="og:image" content="https://ashbirx.me/assets/img/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="article:published_time" content="2026-10-06">
+  <meta property="article:author" content="Ashish Birajdar">
+  <meta property="article:tag" content="internship">
+  <meta property="article:tag" content="nodejs">
+  <meta property="article:tag" content="react">
+  <meta property="article:tag" content="socket-io">
+  <meta property="article:tag" content="redis">
+  <meta property="article:tag" content="startup">
+  <meta property="article:tag" content="devops">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Designing for the Day Things Break: Five Months on a Live Bike-Servicing Platform — ashbirx">
+  <meta name="twitter:description" content="What I learned building live tracking, optional Redis, a blog CMS and onboarding flows at Mechiee, a doorstep two-wheeler servicing startup.">
+  <meta name="twitter:image" content="https://ashbirx.me/assets/img/og-image.jpg">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Designing for the Day Things Break: Five Months on a Live Bike-Servicing Platform",
+  "description": "What I learned building live tracking, optional Redis, a blog CMS and onboarding flows at Mechiee, a doorstep two-wheeler servicing startup.",
+  "datePublished": "2026-10-06",
+  "dateModified": "2026-10-06",
+  "author": {
+    "@type": "Person",
+    "name": "Ashish Birajdar",
+    "url": "https://ashbirx.me/"
+  },
+  "url": "https://ashbirx.me/blog/mechiee-internship-designing-for-failure",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://ashbirx.me/blog/mechiee-internship-designing-for-failure"
+  },
+  "image": "https://ashbirx.me/assets/img/og-image.jpg",
+  "keywords": "internship, nodejs, react, socket-io, redis, startup, devops"
+}
+  </script>
+
+  <!-- Vercel Web Analytics -->
+  <script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
+
+  <!-- Vercel Speed Insights -->
+  <script>
+    window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+</head>
+
+<body>
+  <a class="skip" href="#main">skip to content</a>
+
+  <div class="wrap">
+
+    <header class="prompt">
+      <span class="path">ashbirx@jarvis</span><span class="colon">:</span><span class="tilde"><a href="/" aria-label="home">~</a>/<a href="/blog">blog</a>$</span>
+      <span class="cmd">cat mechiee-internship-designing-for-failure.md</span>
+    </header>
+
+    <main id="main">
+      <article class="post">
+        <header class="post-head">
+          <h1>Designing for the Day Things Break: Five Months on a Live Bike-Servicing Platform</h1>
+          <p class="post-meta"><time datetime="2026-10-06">2026-10-06</time> <span aria-hidden="true">·</span> 7 min read</p>
+          <ul class="tags" aria-label="tags"><li>#internship</li><li>#nodejs</li><li>#react</li><li>#socket-io</li><li>#redis</li><li>#startup</li><li>#devops</li></ul>
+        </header>
+
+        <div class="post-body">
+<p>From March to August 2026 I worked as a Full Stack Developer Intern at Mechiee, a startup that sends mechanics to your door to service your bike or scooter. I&#39;ve since wrapped up the internship, and the team has told me the door is open if I want to work together again.</p>
+<p>This post is a write-up of what I built and, more usefully, what it taught me. If I had to compress five months into one idea, it would be this: <strong>good systems are designed around the day something stops working.</strong></p>
+<h2 id="the-platform-in-one-paragraph">The platform in one paragraph</h2>
+<p>Mechiee is a Node.js/Express backend on MongoDB, with a set of React apps on top: a customer app, a mechanic app, an admin console and, later, portals for service centres. During my time the product moved from a garage-marketplace model (V1) to a service-centre model (V2), so I got to work on both the old shape and the new one. That also taught me how much of a startup&#39;s engineering is changing a running system, not just building a new one.</p>
+<h2 id="1-live-tracking-that-degrades-gracefully">1. Live tracking that degrades gracefully</h2>
+<p>When a mechanic is on the way, the customer watches their location update on a map. The obvious way to build that is a WebSocket: the server pushes each location update, and the map moves.</p>
+<p>The problem is that phones are on mobile networks, and mobile networks drop. If the socket quietly dies, the map freezes, and a frozen map is worse than a slow one because the customer can&#39;t tell whether the mechanic stopped or the app did.</p>
+<p>So the tracking hook on the customer side subscribes to the socket, and while the socket is down it polls a REST endpoint every 10 seconds instead. The customer sees a map that updates a little less smoothly, not one that lies to them.</p>
+<p>A simplified sketch of the idea:</p>
+<pre tabindex="0"><code>if socket is connected:
+    use pushed location updates
+else:
+    every 10 seconds: fetch the latest location over REST</code></pre>
+<p>It is a small amount of code. The point isn&#39;t cleverness. It&#39;s deciding in advance what the user should see when the fast path fails.</p>
+<h2 id="2-making-redis-optional">2. Making Redis optional</h2>
+<p>Redis is useful for caching, one-time passwords and rate limiting. It&#39;s also one more thing that can be unavailable: a free-tier instance that runs out of quota, a dev machine with no Redis at all, a network blip.</p>
+<p>I worked on making Redis something the app can live without:</p>
+<ul>
+  <li>It can be explicitly disabled per environment, so non-production setups don&#39;t need it.</li>
+  <li>Reconnection uses capped backoff, so a Redis outage doesn&#39;t turn into a retry storm.</li>
+  <li>One-time passwords are stored in Redis, with an in-memory fallback.</li>
+  <li>The API rate limiter has an in-memory mode, and a circuit breaker so that a failing script load doesn&#39;t get retried constantly.</li>
+  <li>A shared read-through cache helper means caching is written once, not re-invented in every module.</li>
+</ul>
+<p>The rate limiter&#39;s Redis algorithms were a teammate&#39;s work. What I added was the fallback mode and the circuit breaker, so the limiter keeps limiting when Redis isn&#39;t there. That&#39;s a good example of how real work usually goes: you build on top of what someone else already made and make it more robust.</p>
+<h2 id="3-authenticating-the-live-part">3. Authenticating the live part</h2>
+<p>Real-time features are easy to leave unprotected, because everything feels like it&#39;s &quot;just a connection&quot;. I added JWT verification to the Socket.IO handshake, so an unauthenticated client can&#39;t connect at all. Before a client can join the room for a booking&#39;s tracking or chat, the server also checks that the user is actually allowed to see that booking.</p>
+<p>A related change on the HTTP side: I moved the user&#39;s profile ID into the JWT, so booking authorization stopped needing a database lookup on every request.</p>
+<h2 id="4-a-blog-cms-end-to-end">4. A blog CMS, end to end</h2>
+<p>Mechiee needed content for SEO: a blog, categories, and city-specific landing pages. I built the blog and category system from the backend (Express, Mongoose, Zod validation, Cloudinary image uploads) through to the public blog pages and the admin editor.</p>
+<p>It started life in a separate SEO codebase and was merged into the main platform in June. The city landing pages began as a teammate&#39;s work; I improved them with structured data and FAQ schema, added a location-loading hook with caching, integrated them, and later redesigned them. Most of the value there came from having someone else&#39;s foundation and doing the unglamorous work of making it fit.</p>
+<h2 id="5-rebuilding-the-customer-app">5. Rebuilding the customer app</h2>
+<p>In May I rebuilt the logged-in customer app around feature modules instead of a pile of page components: a four-step booking wizard, live tracking, booking history, profile, dashboard, support chat and notifications. I applied the same structure to the admin, mechanic and garage-partner apps.</p>
+<p>It was a big change landed quickly, and it taught me two things. A feature-based folder structure makes it far easier for several people to work in the same app without stepping on each other. And a large restructuring is only safe if you keep the behaviour the same, which is exactly where a good set of tests earns its keep. (That&#39;s one place I wish I&#39;d written more tests myself.)</p>
+<h2 id="6-onboarding-mechanics-across-four-apps">6. Onboarding mechanics, across four apps</h2>
+<p>One of my biggest pieces of work in the V2 period was how new mechanics join the platform. It touched four apps and the backend:</p>
+<ul>
+  <li>A <strong>four-step registration wizard</strong> in the mechanic app (profile, specialisations, service area and schedule, then documents and bank details), with a fallback upload path if the main upload endpoint fails.</li>
+  <li>An <strong>admin verification desk</strong> with an in-app document viewer, so reviewers can inspect KYC documents without opening files in new tabs, and reject individual documents with a reason.</li>
+  <li>A <strong>re-application flow</strong>, so a rejected mechanic can fix specific documents and resubmit.</li>
+  <li>A <strong>training desk</strong> and an <strong>in-house onboarding wizard</strong> in the service-centre portal.</li>
+  <li>Backend flows and integration tests behind all of it.</li>
+</ul>
+<p>It was a good lesson in how a single feature in a real product is rarely one screen. It&#39;s a pipeline that spans several roles.</p>
+<h2 id="7-delivery-hooks-ci-and-deploys">7. Delivery: hooks, CI and deploys</h2>
+<p>I also set up much of the repository&#39;s delivery tooling: commit hooks (husky, lint-staged, commitlint for conventional commits), a GitHub Actions pipeline with a build matrix across the front-end apps, Render deploy workflows with a manually approved production release, separate dev, staging and production deploy configs, and Infisical for secrets.</p>
+<p>One mistake is worth telling because I learned the most from it. When I rewrote the CI pipeline, I dropped the step that ran the backend tests. For about ten days, pull requests passed CI without the backend suite running. I noticed and restored it. The lesson is simple and a bit embarrassing: <strong>a pipeline that&#39;s green is not the same as a pipeline that&#39;s checking the right things.</strong> Now I read a CI change as carefully as a code change.</p>
+<h2 id="what-else-was-not-code">What else was not code</h2>
+<p>A lot of the learning happened outside the editor. I did manual QA and logged bugs in a structured tracker, researched how apps like Uber, Rapido, Swiggy, Zomato, Blinkit and Urban Company handle their flows to inform our screens, and sat in meetings with the team, business consultants, accountants and investors. In a young startup nobody stays in their lane, and being in those rooms showed me why a feature gets built, not only how.</p>
+<h2 id="what-id-do-differently">What I&#39;d do differently</h2>
+<ul>
+  <li>Write more tests alongside the features. I&#39;m proud of the work, but I wrote fewer tests than the code deserved.</li>
+  <li>Treat tooling changes (CI, hooks, deploys) with the same review care as product code.</li>
+  <li>Write down decisions earlier. In a fast-moving team, the reasoning is the first thing to disappear.</li>
+</ul>
+<h2 id="credit-where-its-due">Credit where it&#39;s due</h2>
+<p>None of this was solo work. The dispatch engine, the payments integration, the inventory logic and much of the V2 backend were built by teammates, and I learned a great deal reading and working alongside their code. I&#39;m grateful to the whole Mechiee team for the trust, and for letting a student work on a live product.</p>
+<h2 id="whats-next">What&#39;s next</h2>
+<p>I&#39;ve wrapped up the internship, and I&#39;m looking forward to building again.</p>
+<p>If you&#39;re a student wondering whether to take on a real startup internship: do it, but go in expecting to learn about systems that fail, teams that change direction, and the unglamorous work that keeps a product running. That turned out to be the best part.</p>
+        </div>
+      </article>
+    </main>
+
+    <hr>
+
+    <nav class="links" aria-label="blog">
+      <a href="/blog">[cd ..]<span class="sr-only"> all posts</span></a>
+      <a href="/">[cd ~]<span class="sr-only"> home</span></a>
+    </nav>
+
+    <hr>
+
+    <footer class="foot">
+      <p class="cursor-line">ashbirx@jarvis:~/blog$ <span class="cursor" aria-hidden="true">_</span></p>
+    </footer>
+
+  </div>
+</body>
+
+</html>
