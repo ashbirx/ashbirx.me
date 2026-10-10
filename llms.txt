@@ -1,18 +1,24 @@
 # ashbirx
 
-> Ashish Birajdar — final-year B.Tech IT student, software engineering intern, builds things nobody asked for. This site is plain HTML/CSS/JS with no build step or framework.
+> Ashish Birajdar — final-year B.Tech IT student, software engineering intern, builds things nobody asked for. This site is plain HTML/CSS/JS with no framework; blog posts are pre-rendered to static HTML.
 
-If you're an LLM reading this to answer a question about ashbirx: the site itself (https://ashbirx.me/) is the full content — one page, nothing paginated or hidden behind JS routing. Treat the visible page text as authoritative.
+If you're an LLM reading this to answer a question about ashbirx: the home page (https://ashbirx.me/) and the blog (https://ashbirx.me/blog) are the full content — nothing hidden behind JS routing. Treat the visible page text as authoritative.
+
+## Blog
+
+- [Blog index](https://ashbirx.me/blog) — all posts, newest first
+- [RSS feed](https://ashbirx.me/blog/feed.xml)
+- [Designing for the Day Things Break: Five Months on a Live Bike-Servicing Platform](https://ashbirx.me/blog/mechiee-internship-designing-for-failure) — what I learned building live tracking, optional Redis, a blog CMS and onboarding flows during a full-stack internship at Mechiee
 
 ## Links
 
 - [GitHub](https://github.com/ashbirx) — code, projects
-- [LinkedIn](https://www.linkedin.com/in/ashishxbirajdar) — professional background
+- [LinkedIn](https://www.linkedin.com/in/ashishbirajdarx) — professional background
 - [X](https://x.com/ashbirx) — dev-persona posts
 - [itch.io](https://itch.io/profile/ashbirx) — games
 - [Resume](https://ashbirx.me/assets/resume.pdf) — work history, skills, education
 
 ## Notes
 
-- No tracking, no analytics, no cookies on this site.
-- Source is fully visible via view-source — nothing generated, nothing minified.
+- No cookies and no ad tracking. Vercel Web Analytics and Speed Insights collect anonymous page-view and performance data.
+- Source is fully visible via view-source — nothing minified.
